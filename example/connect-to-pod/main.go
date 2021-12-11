@@ -9,7 +9,6 @@ import (
 	"os"
 	"path/filepath"
 
-	"github.com/operator-framework/operator-sdk/pkg/log/zap"
 	portforward "github.com/rusenask/k8s-portforward"
 	"k8s.io/client-go/tools/clientcmd"
 	logf "sigs.k8s.io/controller-runtime/pkg/log"
@@ -24,7 +23,7 @@ var (
 func main() {
 
 	logger := logf.Log.WithName("main")
-	logf.SetLogger(zap.Logger())
+	//logf.SetLogger(zap.Logger())
 
 	kubeConfigPath := filepath.Join(os.Getenv("HOME"), ".kube", "config")
 
