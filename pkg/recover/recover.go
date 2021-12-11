@@ -9,7 +9,7 @@ import (
 )
 
 // Panic recovers a panic
-func Panic(log logr.Logger) {
+func Panic(log *logr.Logger) {
 	if e := recover(); e != nil {
 		if log != nil {
 			log.Info("recover from panic", e)

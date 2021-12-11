@@ -15,7 +15,7 @@ import (
 
 // streamConn wraps a pair of SPDY streams and pretends to be a net.Conn
 type streamConn struct {
-	log         logr.Logger
+	log         *logr.Logger
 	c           httpstream.Connection
 	dataStream  httpstream.Stream
 	errorStream httpstream.Stream
@@ -26,7 +26,7 @@ var _ net.Conn = (*streamConn)(nil)
 
 func newStreamConn(log logr.Logger, c httpstream.Connection, dataStream, errorStream httpstream.Stream) *streamConn {
 	s := &streamConn{
-		log:         log,
+		log:         &log,
 		errch:       make(chan error, 1),
 		c:           c,
 		dataStream:  dataStream,
